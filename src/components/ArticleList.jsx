@@ -72,50 +72,76 @@ const ArticleList = () => {
 
     return (
 
-        <form onSubmit={handleSubmit}>
+        <div>
 
-            {/* Campo per il titolo dell'articolo */}
-            <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleFormData}
-                placeholder="Inserisci il titolo dell'articolo"
-            />
+            <h2>Aggiungi un Nuovo Articolo</h2>
 
-            {/* Campo per l'autore dell'articolo */}
-            <input
-                type="text"
-                name="autore"
-                value={formData.autore}
-                onChange={handleFormData}
-                placeholder="Inserisci l'autore dell'articolo"
-            />
+            {/* Form per aggiungere un articolo */}
+            <form onSubmit={handleSubmit}>
 
-            {/* Campo per il contenuto dell'articolo */}
-            <textarea
-                name="contenuto"
-                value={formData.contenuto}
-                onChange={handleFormData}
-                placeholder="Inserisci il contenuto dell'articolo"
-            />
+                {/* Campo per il titolo dell'articolo */}
+                <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleFormData}
+                    placeholder="Inserisci il titolo dell'articolo"
+                />
 
-            {/* Campo per la categoria dell'articolo */}
-            <input
-                type="text"
-                name="categoria"
-                value={formData.categoria}
-                onChange={handleFormData}
-                placeholder="Inserisci la categoria dell'articolo"
-            />
+                {/* Campo per l'autore dell'articolo */}
+                <input
+                    type="text"
+                    name="autore"
+                    value={formData.autore}
+                    onChange={handleFormData}
+                    placeholder="Inserisci l'autore dell'articolo"
+                />
 
-            {/* Bottone per inviare il form */}
-            <button type="submit">Aggiungi Articolo</button>
+                {/* Campo per il contenuto dell'articolo */}
+                <textarea
+                    name="contenuto"
+                    value={formData.contenuto}
+                    onChange={handleFormData}
+                    placeholder="Inserisci il contenuto dell'articolo"
+                />
 
-        </form>
+                {/* Campo per la categoria dell'articolo */}
+                <input
+                    type="text"
+                    name="categoria"
+                    value={formData.categoria}
+                    onChange={handleFormData}
+                    placeholder="Inserisci la categoria dell'articolo"
+                />
 
-    )
+                {/* Bottone per inviare il form */}
+                <button type="submit">Aggiungi Articolo</button>
 
-}
+            </form>
+
+            {/* Lista degli articoli */}
+            <ul>
+
+                {articles.map(article => (
+
+                    <li key={article.id}>
+
+                        <h3>{article.title}</h3>
+                        <p><strong>Autore:</strong> {article.autore}</p>
+                        <p><strong>Contenuto:</strong> {article.contenuto}</p>
+                        <p><strong>Categoria:</strong> {article.categoria}</p>
+                        <button onClick={() => handleDelete(article.id)}>Elimina</button>
+
+                    </li>
+
+                ))}
+
+            </ul>
+
+        </div>
+
+    );
+
+};
 
 export default ArticleList;
