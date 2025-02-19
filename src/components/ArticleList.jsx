@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const ArticleList = () => {
 
+    // stato iniziale degli articoli in pagina
     const [articles, setArticles] = useState([
         { id: 1, title: 'Articolo 1', autore: 'Autore 1', contenuto: 'Contenuto dell\'articolo 1', categoria: 'Categoria 1' },
         { id: 2, title: 'Articolo 2', autore: 'Autore 2', contenuto: 'Contenuto dell\'articolo 2', categoria: 'Categoria 2' },
@@ -27,7 +28,9 @@ const ArticleList = () => {
         const { name, value } = event.target;
         setFormData({
 
+            // mantengo gli altri valori invariati
             ...formData,
+            // aggiorno solo il campo che è stato modificato
             [name]: value
 
         });
@@ -37,7 +40,33 @@ const ArticleList = () => {
     // Funzione per rimuovere un articolo
     const handleDelete = (id) => {
 
+        // filtro l'artiicolo per id e lo rimuovo dalla mia lista
         setArticles(articles.filter(article => article.id !== id));
+
+    };
+
+    // Funzione per gestire il submit del form
+    const handleSubmit = (event) => {
+
+        // evito il refresh della pagina
+        event.preventDefault();
+        // destructuring dei dati del form con successiva creazione di un nuovo articolo
+        const { title, autore, contenuto, categoria } = formData;
+
+        if (title && autore && contenuto && categoria) {
+            const newArticle = {
+                id: articles.length + 1,
+                title,
+                autore,
+                contenuto,
+                categoria
+
+            };
+
+            // aggiungo il nuovo articolo alla mia lista
+            setArticles([...articles, newArticle]);
+
+        }
 
     };
 
