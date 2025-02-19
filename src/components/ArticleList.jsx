@@ -70,6 +70,52 @@ const ArticleList = () => {
 
     };
 
+    return (
+
+        <form onSubmit={handleSubmit}>
+
+            {/* Campo per il titolo dell'articolo */}
+            <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleFormData}
+                placeholder="Inserisci il titolo dell'articolo"
+            />
+
+            {/* Campo per l'autore dell'articolo */}
+            <input
+                type="text"
+                name="autore"
+                value={formData.autore}
+                onChange={handleFormData}
+                placeholder="Inserisci l'autore dell'articolo"
+            />
+
+            {/* Campo per il contenuto dell'articolo */}
+            <textarea
+                name="contenuto"
+                value={formData.contenuto}
+                onChange={handleFormData}
+                placeholder="Inserisci il contenuto dell'articolo"
+            />
+
+            {/* Campo per la categoria dell'articolo */}
+            <input
+                type="text"
+                name="categoria"
+                value={formData.categoria}
+                onChange={handleFormData}
+                placeholder="Inserisci la categoria dell'articolo"
+            />
+
+            {/* Bottone per inviare il form */}
+            <button type="submit">Aggiungi Articolo</button>
+
+        </form>
+
+    )
+
 }
 
 export default ArticleList;
