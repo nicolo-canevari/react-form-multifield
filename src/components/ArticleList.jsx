@@ -66,6 +66,16 @@ const ArticleList = () => {
             // aggiungo il nuovo articolo alla mia lista
             setArticles([...articles, newArticle]);
 
+            // resetto lo stato del form (ripristina i campi "vuoti")
+            setFormData({
+
+                title: '',
+                autore: '',
+                contenuto: '',
+                categoria: ''
+
+            });
+
         }
 
     };
